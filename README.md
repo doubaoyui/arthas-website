@@ -1,4 +1,4 @@
-# Arthas Website (Hugo + Decap CMS)
+# Arthas Website (Hugo)
 
 这个子项目用于快速搭建 Arthas 官网（下载页）。
 
@@ -9,7 +9,7 @@
 
 ## Why
 
-- Hugo 构建快、部署简单（Netlify/Cloudflare Pages/GitHub Pages 都行）。
+- Hugo 构建快、部署简单（任何静态托管都行）。
 - 纯静态 + Nginx：部署与运维成本最低、稳定性最好。
 
 ## How
@@ -27,10 +27,9 @@ hugo server -D
 
 > 小提醒：如果你本机还没装 Hugo，会看到 `hugo: The term 'hugo' is not recognized`，先装一下就好啦～
 
-### CMS（Decap）后台入口
+### 后台（可选）
 
-本仓库目前以“纯静态官网”为目标，不需要后台登录/写库。
-（目录里保留了 `/admin/` 的静态文件，后续如果你想再启用 CMS 再说也行。）
+本仓库目前以“纯静态官网”为目标：不包含后台登录/写库能力。
 
 ### 下载数据维护
 
@@ -38,11 +37,13 @@ hugo server -D
 
 - 直接改文件提交
 
-### Netlify 部署
+### 部署（Nginx/任意静态托管）
 
-把这个目录作为 Netlify site 的 root：
+1) 本地构建：
 
-- Build command: `hugo --gc --minify`
-- Publish directory: `public`
+```bash
+hugo --gc --minify
+```
 
-也可以直接用 `netlify.toml`（已提供）。
+2) 把生成的 `public/` 目录内容上传到服务器的站点根目录（例如 `/var/www/arthas-website`）
+3) Nginx 配置静态目录即可

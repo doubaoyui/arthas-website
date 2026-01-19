@@ -1,6 +1,5 @@
 # 说明：
 # - 这个文件会被下载页读取（layouts/downloads/list.html）
-# - 也会被 Decap CMS 在 /admin/ 后台管理
 productName: "Arthas"
 downloads:
   - id: "windows-x64-msi"
