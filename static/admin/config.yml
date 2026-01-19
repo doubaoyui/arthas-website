@@ -1,0 +1,37 @@
+# Decap CMS (原 Netlify CMS) 配置
+# 默认使用 Netlify Identity + Git Gateway：
+backend:
+  name: git-gateway
+  branch: main
+
+# 如果想直接用 GitHub OAuth，可改成：
+# backend:
+#   name: github
+#   repo: YOUR_GITHUB_OWNER/YOUR_REPO
+#   branch: main
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "downloads"
+    label: "下载"
+    files:
+      - name: "downloads"
+        label: "下载链接与版本"
+        file: "data/downloads.yaml"
+        fields:
+          - { name: "productName", label: "产品名", widget: "string" }
+          - name: "downloads"
+            label: "下载项"
+            widget: "list"
+            summary: "{{fields.label}} ({{fields.version}})"
+            fields:
+              - { name: "id", label: "ID", widget: "string" }
+              - { name: "platform", label: "平台", widget: "select", options: ["windows", "macos"] }
+              - { name: "label", label: "显示名称", widget: "string" }
+              - { name: "version", label: "版本", widget: "string", required: false }
+              - { name: "url", label: "下载链接", widget: "string" }
+              - { name: "sha256", label: "SHA256", widget: "string", required: false }
+              - { name: "notes", label: "备注", widget: "text", required: false }
+

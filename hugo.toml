@@ -1,0 +1,13 @@
+baseURL = "/"
+languageCode = "zh-cn"
+title = "Arthas"
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  description = "Arthas 桌面端：集成 Codex 的开发工具"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+

@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <section class="hero">
+    <h1 class="hero__title">{{ .Site.Title }}</h1>
+    <p class="hero__desc">{{ .Site.Params.description }}</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="/downloads/">去下载</a>
+      <a class="btn btn--ghost" href="/admin/">后台管理</a>
+    </div>
+  </section>
+
+  <section class="card">
+    {{ .Content }}
+  </section>
+{{ end }}
+

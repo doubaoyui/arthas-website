@@ -1,0 +1,19 @@
+# 说明：
+# - 这个文件会被下载页读取（layouts/downloads/list.html）
+# - 也会被 Decap CMS 在 /admin/ 后台管理
+productName: "Arthas"
+downloads:
+  - id: "windows-x64-msi"
+    platform: "windows"
+    label: "Windows (x64) · MSI"
+    version: "0.0.14"
+    url: ""
+    sha256: ""
+    notes: "把这里替换成你的 MSI 下载链接（建议用 GitHub Releases 资产链接）。"
+  - id: "macos-dmg"
+    platform: "macos"
+    label: "macOS · DMG"
+    version: "0.0.14"
+    url: ""
+    sha256: ""
+    notes: "把这里替换成你的 DMG 下载链接。"

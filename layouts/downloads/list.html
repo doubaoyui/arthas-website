@@ -1,0 +1,35 @@
+{{ define "main" }}
+  <article class="page">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="lead">{{ . }}</p>{{ end }}
+
+    {{ $data := site.Data.downloads }}
+    {{ $items := $data.downloads }}
+
+    <div class="grid">
+      {{ range $items }}
+        <div class="download">
+          <div class="download__meta">
+            <div class="download__label">{{ .label }}</div>
+            {{ with .version }}<div class="download__version">版本：{{ . }}</div>{{ end }}
+          </div>
+
+          {{ with .notes }}{{ if ne . "" }}<div class="download__notes">{{ . }}</div>{{ end }}{{ end }}
+
+          <div class="download__actions">
+            {{ if and (isset . "url") (ne .url "") }}
+              <a class="btn btn--primary" href="{{ .url }}" rel="noopener">下载</a>
+            {{ else }}
+              <span class="btn" aria-disabled="true">暂未提供</span>
+            {{ end }}
+            {{ with .sha256 }}{{ if ne . "" }}<code class="download__sha">SHA256: {{ . }}</code>{{ end }}{{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div>
+
+    <p class="hint">
+      下载链接与版本信息来自 <code>data/downloads.yaml</code>，可以在 <code>/admin/</code> 后台维护。
+    </p>
+  </article>
+{{ end }}
