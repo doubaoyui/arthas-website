@@ -5,9 +5,14 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   description = "Arthas 桌面端：集成 Codex 的开发工具"
+  # 备案信息（按你的真实备案号填写）
+  icpNumber = ""
+  icpLink = "https://beian.miit.gov.cn/"
+  # 公安备案（可选）
+  publicSecurityNumber = ""
+  publicSecurityLink = ""
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-

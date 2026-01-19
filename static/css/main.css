@@ -7,6 +7,7 @@
     --brand: #7c5cff;
     --brand2: #41d1ff;
     --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    --radius: 16px;
 }
 
 * {
@@ -46,7 +47,7 @@ a {
     top: 0;
     z-index: 10;
     backdrop-filter: blur(10px);
-    background: rgba(11, 16, 32, 0.75);
+    background: rgba(6, 10, 22, 0.65);
     border-bottom: 1px solid var(--border);
 }
 
@@ -60,6 +61,17 @@ a {
 .brand {
     font-weight: 700;
     letter-spacing: 0.2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand__mark {
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(124, 92, 255, 1), rgba(65, 209, 255, 0.9));
+    box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.12);
 }
 
 .nav {
@@ -80,14 +92,36 @@ main.container {
     padding: 46px 26px;
     border: 1px solid var(--border);
     background: linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(65, 209, 255, 0.12));
-    border-radius: 16px;
+    border-radius: var(--radius);
     box-shadow: var(--shadow);
+}
+
+.hero--wide {
+    padding: 56px 32px;
+    background:
+        radial-gradient(900px 500px at 50% 10%, rgba(65, 209, 255, 0.22), transparent 55%),
+        radial-gradient(1000px 600px at 30% 30%, rgba(124, 92, 255, 0.22), transparent 60%),
+        rgba(255, 255, 255, 0.04);
+}
+
+.hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--muted);
+    font-size: 13px;
+    width: fit-content;
 }
 
 .hero__title {
     margin: 0 0 8px;
-    font-size: 44px;
+    font-size: 52px;
     line-height: 1.1;
+    letter-spacing: -0.6px;
 }
 
 .hero__desc {
@@ -106,8 +140,12 @@ main.container {
     margin-top: 18px;
     padding: 22px 26px;
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: var(--panel);
+}
+
+.card--tight {
+    padding: 18px 22px;
 }
 
 .page h1 {
@@ -180,9 +218,56 @@ main.container {
     background: linear-gradient(135deg, rgba(124, 92, 255, 0.55), rgba(65, 209, 255, 0.22));
 }
 
+.btn--pill {
+    border-radius: 999px;
+    padding: 10px 16px;
+}
+
 .btn--ghost:hover,
 .btn--primary:hover {
     filter: brightness(1.08);
+}
+
+.hero__download-row {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.download-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(0, 0, 0, 0.18);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.download-pill:hover {
+    filter: brightness(1.06);
+}
+
+.download-pill__icon {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.download-pill__title {
+    font-weight: 700;
+}
+
+.download-pill__sub {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
 }
 
 .hint {
@@ -203,6 +288,7 @@ main.container {
     padding: 16px 0;
     color: var(--muted);
     font-size: 13px;
+    flex-wrap: wrap;
 }
 
 .sep {
@@ -213,3 +299,10 @@ code {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
+.muted-link {
+    color: var(--muted);
+}
+
+.muted-link:hover {
+    color: var(--text);
+}

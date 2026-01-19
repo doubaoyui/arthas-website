@@ -4,7 +4,18 @@
       <span>© {{ now.Year }} {{ .Site.Title }}</span>
       <span class="sep">·</span>
       <a href="/downloads/">下载</a>
+      {{ with .Site.Params.icpNumber }}
+        {{ if ne . "" }}
+          <span class="sep">·</span>
+          <a class="muted-link" href="{{ $.Site.Params.icpLink }}" rel="noopener" target="_blank">{{ . }}</a>
+        {{ end }}
+      {{ end }}
+      {{ with .Site.Params.publicSecurityNumber }}
+        {{ if ne . "" }}
+          <span class="sep">·</span>
+          <a class="muted-link" href="{{ $.Site.Params.publicSecurityLink }}" rel="noopener" target="_blank">{{ . }}</a>
+        {{ end }}
+      {{ end }}
     </div>
   </div>
 </footer>
-

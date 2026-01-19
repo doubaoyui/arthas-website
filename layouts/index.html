@@ -1,15 +1,43 @@
 {{ define "main" }}
-  <section class="hero">
-    <h1 class="hero__title">{{ .Site.Title }}</h1>
-    <p class="hero__desc">{{ .Site.Params.description }}</p>
+  {{ $data := site.Data.downloads }}
+  {{ $items := $data.downloads }}
+  {{ $win := first 1 (where $items "platform" "windows") }}
+  {{ $mac := first 1 (where $items "platform" "macos") }}
+
+  <section class="hero hero--wide">
+    <div class="hero__badge">Desktop · Codex inside</div>
+
+    <h1 class="hero__title">
+      Simple, Fast, Vibe-Ready
+    </h1>
+    <p class="hero__desc">
+      {{ .Site.Params.description }}
+    </p>
+
     <div class="hero__actions">
-      <a class="btn btn--primary" href="/downloads/">去下载</a>
-      <a class="btn btn--ghost" href="/admin/">后台管理</a>
+      <a class="btn btn--primary btn--pill" href="/downloads/">查看下载</a>
+      <a class="btn btn--ghost btn--pill" href="/#intro">了解更多</a>
+    </div>
+
+    <div class="hero__download-row">
+      {{ with index $win 0 }}
+        <a class="download-pill" href="{{ .url | default "/downloads/" }}" rel="noopener">
+          <span class="download-pill__icon" aria-hidden="true">🪟</span>
+          <span class="download-pill__title">Arthas for Windows</span>
+          <span class="download-pill__sub">x64 · MSI{{ with .version }} · {{ . }}{{ end }}</span>
+        </a>
+      {{ end }}
+      {{ with index $mac 0 }}
+        <a class="download-pill" href="{{ .url | default "/downloads/" }}" rel="noopener">
+          <span class="download-pill__icon" aria-hidden="true">🍎</span>
+          <span class="download-pill__title">Arthas for macOS</span>
+          <span class="download-pill__sub">DMG{{ with .version }} · {{ . }}{{ end }}</span>
+        </a>
+      {{ end }}
     </div>
   </section>
 
-  <section class="card">
+  <section id="intro" class="card card--tight">
     {{ .Content }}
   </section>
 {{ end }}
-
